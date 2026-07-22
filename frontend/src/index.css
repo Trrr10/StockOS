@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: #07080f;
+  color: #e2e8f0;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar       { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: #0d0e1a; }
+::-webkit-scrollbar-thumb { background: #1e2035; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #7effd4; }
+::selection { background: rgba(126,255,212,0.2); color: #7effd4; }
+
+/* ── Design tokens ───────────────────────────────── */
+:root {
+  --accent:    #7effd4;
+  --danger:    #ff4d6d;
+  --warn:      #ffb347;
+  --surface:   #0d0e1a;
+  --card:      #12131f;
+  --border:    rgba(255,255,255,0.06);
+  --muted:     rgba(255,255,255,0.38);
+  --text:      #e2e8f0;
+}
+
+/* ── Utility classes used across pages ──────────── */
+@layer components {
+  /* Backgrounds */
+  .bg-obsidian  { background-color: #07080f; }
+  .bg-surface   { background-color: var(--surface); }
+  .bg-card      { background-color: var(--card); }
+
+  /* Text */
+  .text-muted   { color: var(--muted); }
+  .text-accent  { color: var(--accent); }
+  .text-danger  { color: var(--danger); }
+
+  /* Border */
+  .border-border { border-color: var(--border); }
+
+  /* Font */
+  .font-display { font-family: 'Clash Display', 'DM Sans', sans-serif; }
+
+  /* Glass card */
+  .glass-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .glass-card:hover {
+    border-color: rgba(126,255,212,0.12);
+    box-shadow: 0 4px 32px rgba(0,0,0,0.4);
+  }
+
+  /* Input */
+  .input-dark {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .input-dark::placeholder { color: var(--muted); }
+  .input-dark:focus {
+    border-color: rgba(126,255,212,0.4);
+    box-shadow: 0 0 0 3px rgba(126,255,212,0.07);
+  }
+  .input-dark option { background: #12131f; color: #e2e8f0; }
+
+  /* Buttons */
+  .btn-primary {
+    background: var(--accent);
+    color: #07080f;
+    font-weight: 600;
+    transition: background 0.15s, transform 0.1s, box-shadow 0.2s;
+    box-shadow: 0 0 22px rgba(126,255,212,0.28);
+  }
+  .btn-primary:hover  { background: #a2ffe3; box-shadow: 0 0 36px rgba(126,255,212,0.42); }
+  .btn-primary:active { transform: scale(0.97); }
+  .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  .btn-ghost {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { border-color: rgba(126,255,212,0.25); color: var(--text); }
+  .btn-ghost:disabled { opacity: 0.35; cursor: not-allowed; }
+
+  /* Nav active state */
+  .nav-active {
+    background: rgba(126,255,212,0.1) !important;
+    color: var(--accent) !important;
+    border: 1px solid rgba(126,255,212,0.22) !important;
+  }
+
+  /* Status badges */
+  .status-green { background: rgba(74,222,128,0.1);  color: #4ade80; border: 1px solid rgba(74,222,128,0.25); }
+  .status-amber { background: rgba(251,191,36,0.1);  color: #fbbf24; border: 1px solid rgba(251,191,36,0.25); }
+  .status-red   { background: rgba(248,113,113,0.1); color: #f87171; border: 1px solid rgba(248,113,113,0.25); }
+
+  /* Traffic light dots */
+  .dot-green {
+    width:10px; height:10px; border-radius:50%; background:#4ade80; flex-shrink:0;
+    box-shadow: 0 0 8px rgba(74,222,128,0.7);
+  }
+  .dot-amber {
+    width:10px; height:10px; border-radius:50%; background:#fbbf24; flex-shrink:0;
+    box-shadow: 0 0 8px rgba(250,204,21,0.7);
+  }
+  .dot-red {
+    width:10px; height:10px; border-radius:50%; background:#f87171; flex-shrink:0;
+    box-shadow: 0 0 8px rgba(248,113,113,0.7);
+    animation: pulse-dot 1.6s ease-in-out infinite;
+  }
+}
+
+/* ── Background grid ─────────────────────────── */
+/* Both class names used in codebase — bg-grid AND grid-bg */
+.bg-grid,
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(126,255,212,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(126,255,212,0.025) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+/* ── Noise texture overlay ───────────────────── */
+.noise {
+  position: relative;
+}
+.noise::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+/* ── Text glow ───────────────────────────────── */
+.text-glow {
+  text-shadow:
+    0 0 40px rgba(126,255,212,0.6),
+    0 0 80px rgba(126,255,212,0.3);
+}
+
+/* ── Glow utilities ──────────────────────────── */
+.glow-green {
+  box-shadow:
+    0 0 22px rgba(126,255,212,0.28),
+    0 0 60px rgba(126,255,212,0.15);
+}
+.glow-green:hover {
+  box-shadow:
+    0 0 36px rgba(126,255,212,0.42),
+    0 0 80px rgba(126,255,212,0.2);
+}
+
+/* ── Skeleton shimmer ───────────────────────── */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.04) 25%,
+    rgba(255,255,255,0.09) 50%,
+    rgba(255,255,255,0.04) 75%
+  );
+  background-size: 400px 100%;
+  animation: shimmer 1.6s infinite;
+}
+
+/* ── Keyframes ──────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position:  400px 0; }
+}
+
+@keyframes pulse-dot {
+  0%,100% { box-shadow: 0 0 8px rgba(248,113,113,0.7); }
+  50%     { box-shadow: 0 0 20px rgba(248,113,113,1), 0 0 32px rgba(248,113,113,0.4); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
