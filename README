@@ -1,159 +1,134 @@
-STOCK OS – Distributed AI-Driven Inventory Operating System
+# Smart Inventory Management System
 
-A cloud-native, event-driven platform automating 80% of inventory and operational workflows using real-time systems + AI intelligence
+## Overview
 
-👩‍💻 Authors
-Saumya Singh
-Trrishaa Balakrishnan
+Smart Inventory Management System is an AI-powered web application designed to simplify and automate inventory operations for businesses. The platform centralizes procurement, inventory tracking, stock management, sales, and reporting into a single dashboard, reducing manual effort and improving operational efficiency.
 
-🏆 CodeHer | Exploree TinkerBell
+The application implements role-based access control to ensure that users only have access to features relevant to their responsibilities. Administrators gain a complete overview of business operations, while Sales and Procurement teams can efficiently manage their respective workflows.
 
-📌 Abstract
+AI-powered insights generated using Groq assist users in making informed inventory decisions, identifying stock trends, and improving overall inventory planning.
 
-STOCK OS is a distributed, real-time inventory operating system designed to solve consistency, synchronization, and prediction challenges in SME supply chains.
+---
 
-Unlike traditional systems that are reactive and eventually consistent, STOCK OS ensures:
+## Features
 
-Strong consistency at the data layer
-Real-time synchronization across all clients
-Embedded AI-driven decision making
+### Role-Based Access Control
 
-👉 Goal: Automate ~80% of business operations
+**Admin**
 
-❗ Problem Statement
+* Complete business overview
+* Inventory dashboard
+* AI Assistant
+* Audit Trail
+* Stock Tracking
+* Stock Adjustment Panel
+* User Management
+* Reports and Analytics
 
-Existing systems suffer from:
+**Sales**
 
-Lack of concurrency control → race conditions
-No stock reservation → overselling
-Delayed synchronization → inconsistent data
-No predictive intelligence → reactive workflows
-📉 Impact
-15–25% revenue loss
-30% order delays
-40% drop in repeat customers
-💡 Solution Overview
+* Create and manage sales orders
+* Track order status
+* Update inventory after sales
+* View customer orders
 
-A cloud-native, AI-first inventory OS that is:
+**Procurement**
 
-Real-time
-Predictive
-Conflict-free
-Fully automated
-🧠 AI & Intelligence Layer
-⚡ Inference Stack
-Groq (LLaMA 3) → sub-100ms inference
-Sarvam AI → NLP + voice interaction
-Time-Series ML Models → forecasting & prediction
-📊 AI Capabilities
-Demand Forecasting (60–90 day trends)
-Stockout Prediction (days-to-stockout)
-Anomaly Detection (duplicate orders, abnormal drops)
-Smart Procurement (auto PO generation)
-Natural Language Queries (role-aware insights)
-🔄 Workflow Automation
-Raw Material → WIP → Finished Goods → Orders → Dispatch → Delivery
-Atomic state transitions
-Event-triggered processing (Kafka)
-Zero manual re-entry across pipeline
-🏗️ System Architecture
-🔹 Frontend Layer
-React 18 + Vite + Tailwind
-Role-based SPAs
-Voice Input (Web Speech API)
-QR-based inventory actions
+* Manage suppliers
+* Create purchase orders
+* Track procurement orders
+* Receive inventory
+* Restock products
 
-UI is stateless — reflects backend state only
+---
 
-🔹 Backend Layer (Control Plane)
-FastAPI (async, high throughput)
-Centralized business logic:
-Stock validation
-Conflict detection
-Order lifecycle management
-JWT Authentication (secure endpoints)
-🔹 Event Streaming Layer
-Apache Kafka
-Handles:
-Inventory events
-Order lifecycle events
-Audit logs
+## Core Modules
 
-Enables asynchronous, scalable processing
+### Inventory Dashboard
 
-🔹 AI Intelligence Layer
-Groq (LLaMA 3)
-Sarvam AI
-Time-series forecasting models
+* Real-time inventory statistics
+* Stock availability overview
+* Low-stock monitoring
+* Inventory performance metrics
+* Sales and procurement summaries
 
-AI is embedded within workflows, not post-processing
+### Inventory Management
 
-🔹 Data Layer (Source of Truth)
-Supabase (PostgreSQL)
-ACID Transactions
-Row-Level Security (RLS)
-Key Features:
-Stock reservation system (Available vs Reserved)
-Immutable audit logs
-Realtime sync (<200ms latency)
-🔹 Caching & Performance
-Redis
-AI response caching
-Rate limiting
-Session storage
-🔐 Consistency & Concurrency Model
-Pessimistic locking (stock reservation)
-All writes routed via backend
-No client-side state mutation
-✅ Guarantees:
-Zero overselling
-No duplicate allocation
-Strong consistency under concurrency
-🔑 Core Features
-Real-time inventory tracking
-Conflict-free order processing
-Automated procurement system
-Role-based access control
-Voice + NLP interaction
-Immutable audit trails
-📊 Impact Metrics
-Metric	Improvement
-Stock Errors	↓ 80–90%
-Overselling	Eliminated
-Processing Speed	2× Faster
-Revenue Recovery	+15–25%
-Manual Work	↓ up to 80%
-🛠️ Tech Stack
-Layer	Technologies
-Frontend	React, Vite, Tailwind
-Backend	FastAPI, JWT
-AI	Groq (LLaMA 3), Sarvam AI, Time-Series ML
-Database	Supabase PostgreSQL (ACID, RLS)
-Events	Apache Kafka
-Cache	Redis
-🔮 Future Scope
-Dynamic pricing (AI-driven)
-Supplier risk prediction
-Autonomous procurement (RL models)
-ERP & e-commerce integrations
-🎯 Vision
+* Product management
+* Category management
+* SKU management
+* Real-time stock updates
+* Product search and filtering
 
-Build a self-operating business system where:
+### Stock Tracking
 
-Inventory manages itself
-Procurement self-optimizes
-Decisions are AI-driven
-🧩 Key Differentiators
-Data-layer enforced correctness
-Event-driven + real-time hybrid architecture
-Deeply embedded AI (not add-on)
-Sub-100ms intelligent decision making
-📎 Conclusion
+* Monitor stock movement
+* View inventory history
+* Track stock inflow and outflow
 
-STOCK OS reframes inventory management as a distributed systems + AI problem, delivering:
+### Stock Adjustment
 
-Scalability
-Determinism
-Automation
-Predictive intelligence
+* Manual inventory corrections
+* Damaged stock adjustments
+* Inventory reconciliation
+* Adjustment history
+
+### Procurement
+
+* Supplier management
+* Purchase order management
+* Goods received tracking
+* Procurement history
+
+### Orders Management
+
+* Sales order management
+* Purchase order tracking
+* Order status monitoring
+* Customer and supplier information
+
+### AI Assistant
+
+Powered by Groq, the AI Assistant provides:
+
+* Inventory insights
+* Product recommendations
+* Stock optimization suggestions
+* Business-related queries
+* Smart inventory assistance
+
+### Audit Trail
+
+* Complete activity logs
+* User action tracking
+* Inventory modification history
+* System monitoring
+
+---
+
+## Technology Stack
+
+| Category           | Technologies                             |
+| ------------------ | ---------------------------------------- |
+| Frontend           | React.js, TypeScript, Vite, Tailwind CSS |
+| Backend            | Node.js, Express.js                      |
+| Database           | Supabase (PostgreSQL)                    |
+| Authentication     | Supabase Authentication                  |
+| AI Integration     | Groq API                                 |
+| Voice Automation   | Sarvam AI                                |
+| Charts & Analytics | Recharts                                 |
+| Version Control    | Git, GitHub                              |
+
+---
+
+## Key Highlights
+
+* AI-powered inventory insights using Groq
+* Secure role-based access control
+* Real-time inventory tracking
+* Procurement and sales management
+* Comprehensive audit logging
+* Interactive analytics dashboard
+* Responsive user interface
+* Automated inventory workflows
 
