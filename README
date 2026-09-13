@@ -1,12 +1,8 @@
-# Smart Inventory Management System
+# StockOS — Smart Inventory Management System
 
-## Overview
+StockOS is an AI-powered inventory management platform designed to simplify and automate business operations. It centralizes inventory tracking, procurement, sales, supplier management, reporting, and stock monitoring into a single platform.
 
-Smart Inventory Management System is an AI-powered web application designed to simplify and automate inventory operations for businesses. The platform centralizes procurement, inventory tracking, stock management, sales, and reporting into a single dashboard, reducing manual effort and improving operational efficiency.
-
-The application implements role-based access control to ensure that users only have access to features relevant to their responsibilities. Administrators gain a complete overview of business operations, while Sales and Procurement teams can efficiently manage their respective workflows.
-
-AI-powered insights generated using Groq assist users in making informed inventory decisions, identifying stock trends, and improving overall inventory planning.
+The system uses role-based access control to provide users with access to features relevant to their responsibilities. AI-powered insights through Groq help users understand inventory trends, identify stock-related issues, and make better replenishment decisions.
 
 ---
 
@@ -14,31 +10,33 @@ AI-powered insights generated using Groq assist users in making informed invento
 
 ### Role-Based Access Control
 
-**Admin**
+StockOS supports different user roles with dedicated workflows and permissions.
 
-* Complete business overview
-* Inventory dashboard
-* AI Assistant
-* Audit Trail
-* Stock Tracking
-* Stock Adjustment Panel
-* User Management
-* Reports and Analytics
+#### Admin
 
-**Sales**
+- View overall business operations
+- Monitor inventory statistics
+- Access AI Assistant
+- View audit trails
+- Track stock movement
+- Perform stock adjustments
+- Manage users
+- Access reports and analytics
 
-* Create and manage sales orders
-* Track order status
-* Update inventory after sales
-* View customer orders
+#### Sales
 
-**Procurement**
+- Create and manage sales orders
+- Track order status
+- Update inventory after sales
+- View customer orders
 
-* Manage suppliers
-* Create purchase orders
-* Track procurement orders
-* Receive inventory
-* Restock products
+#### Procurement
+
+- Manage suppliers
+- Create and manage purchase orders
+- Track procurement orders
+- Receive inventory
+- Restock products
 
 ---
 
@@ -46,89 +44,254 @@ AI-powered insights generated using Groq assist users in making informed invento
 
 ### Inventory Dashboard
 
-* Real-time inventory statistics
-* Stock availability overview
-* Low-stock monitoring
-* Inventory performance metrics
-* Sales and procurement summaries
+- Real-time inventory statistics
+- Stock availability overview
+- Low-stock monitoring
+- Inventory performance metrics
+- Sales and procurement summaries
+- Interactive charts and analytics
 
 ### Inventory Management
 
-* Product management
-* Category management
-* SKU management
-* Real-time stock updates
-* Product search and filtering
+- Product management
+- Category management
+- SKU management
+- Product search and filtering
+- Real-time stock updates
 
 ### Stock Tracking
 
-* Monitor stock movement
-* View inventory history
-* Track stock inflow and outflow
+- Monitor stock movement
+- Track inventory inflow and outflow
+- View inventory history
+- Review product-level stock activity
 
 ### Stock Adjustment
 
-* Manual inventory corrections
-* Damaged stock adjustments
-* Inventory reconciliation
-* Adjustment history
+- Perform manual inventory corrections
+- Record damaged stock
+- Support inventory reconciliation
+- Maintain adjustment history
 
-### Procurement
+### Procurement Management
 
-* Supplier management
-* Purchase order management
-* Goods received tracking
-* Procurement history
+- Manage supplier information
+- Create and track purchase orders
+- Monitor goods received
+- Track procurement history
+- Support inventory restocking workflows
 
-### Orders Management
+### Sales and Orders Management
 
-* Sales order management
-* Purchase order tracking
-* Order status monitoring
-* Customer and supplier information
+- Create and manage sales orders
+- Track sales order status
+- Manage customer information
+- Track purchase orders
+- Manage supplier information
+- Monitor order progress
 
 ### AI Assistant
 
-Powered by Groq, the AI Assistant provides:
+The AI Assistant is powered by Groq and provides AI-based support for inventory-related decisions.
 
-* Inventory insights
-* Product recommendations
-* Stock optimization suggestions
-* Business-related queries
-* Smart inventory assistance
+It can assist with:
+
+- Inventory insights
+- Product recommendations
+- Stock optimization suggestions
+- Business-related inventory queries
+- Stock trend analysis
+- Replenishment-related decisions
 
 ### Audit Trail
 
-* Complete activity logs
-* User action tracking
-* Inventory modification history
-* System monitoring
+StockOS maintains activity logs to improve traceability and accountability.
+
+The audit system records:
+
+- User actions
+- Inventory modifications
+- Stock adjustments
+- System activities
+- Inventory change history
 
 ---
 
 ## Technology Stack
 
-| Category           | Technologies                             |
-| ------------------ | ---------------------------------------- |
-| Frontend           | React.js, TypeScript, Vite, Tailwind CSS |
-| Backend            | Node.js, Express.js                      |
-| Database           | Supabase (PostgreSQL)                    |
-| Authentication     | Supabase Authentication                  |
-| AI Integration     | Groq API                                 |
-| Voice Automation   | Sarvam AI                                |
-| Charts & Analytics | Recharts                                 |
-| Version Control    | Git, GitHub                              |
+| Category | Technologies |
+|---|---|
+| Frontend | React.js, TypeScript, Vite, Tailwind CSS |
+| Backend | Node.js, Express.js |
+| Database | Supabase, PostgreSQL |
+| Authentication | Supabase Authentication |
+| AI Integration | Groq API |
+| Voice Automation | Sarvam AI |
+| Charts and Analytics | Recharts |
+| Version Control | Git, GitHub |
+
+---
+
+## System Architecture
+
+```text
+React.js + TypeScript Frontend
+              |
+              v
+       Express.js Backend
+              |
+       ----------------
+       |              |
+       v              v
+  Supabase       AI Services
+  PostgreSQL     Groq API
+  Authentication Sarvam AI
+       |
+       v
+Inventory, Sales, Procurement,
+Suppliers, Orders, Audit Logs
+```
+
+---
+
+## Main Workflow
+
+```text
+Admin / Sales / Procurement User
+                |
+                v
+        Role-Based Login
+                |
+                v
+        Dashboard and Modules
+                |
+       -----------------------
+       |          |          |
+       v          v          v
+  Inventory    Sales    Procurement
+       |          |          |
+       -----------------------
+                |
+                v
+       Supabase PostgreSQL
+                |
+                v
+      AI-Powered Inventory
+            Insights
+```
 
 ---
 
 ## Key Highlights
 
-* AI-powered inventory insights using Groq
-* Secure role-based access control
-* Real-time inventory tracking
-* Procurement and sales management
-* Comprehensive audit logging
-* Interactive analytics dashboard
-* Responsive user interface
-* Automated inventory workflows
+- AI-powered inventory insights using Groq
+- Role-based access control
+- Inventory, sales, and procurement workflows
+- Real-time stock tracking
+- Supplier and purchase-order management
+- Stock adjustment and reconciliation
+- Comprehensive audit logging
+- Interactive analytics dashboard
+- Voice automation using Sarvam AI
+- Responsive user interface
+- Centralized business operations platform
 
+---
+
+## Project Objective
+
+StockOS aims to reduce manual inventory-management work by bringing inventory, sales, procurement, supplier management, and reporting into one centralized system.
+
+The platform combines traditional business workflows with AI-powered assistance to help businesses monitor stock, understand inventory activity, and make more informed operational decisions.
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+Make sure you have the following installed:
+
+- Node.js
+- npm
+- Git
+
+You will also need:
+
+- A Supabase project
+- Supabase project credentials
+- A Groq API key
+- A Sarvam AI API key, if voice automation is enabled
+
+### Installation
+
+Clone the repository:
+
+```bash
+git clone <your-repository-url>
+```
+
+Navigate to the project directory:
+
+```bash
+cd StockOS
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Create an environment file:
+
+```bash
+.env
+```
+
+Add the required environment variables:
+
+```env
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+GROQ_API_KEY=your_groq_api_key
+SARVAM_API_KEY=your_sarvam_api_key
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Open the local development URL shown in your terminal.
+
+---
+
+## Security Considerations
+
+StockOS uses Supabase Authentication and role-based access control to restrict access to different modules.
+
+The system is designed to support:
+
+- Authenticated user access
+- Role-based permissions
+- Controlled inventory modifications
+- Activity tracking through audit logs
+- Separation of administrative, sales, and procurement workflows
+
+API keys should be stored in environment variables and should not be committed to the repository.
+
+---
+
+## Project Status
+
+StockOS is an actively developed project focused on AI-assisted inventory management, operational automation, and business analytics.
+
+---
+
+## Author
+
+**Trrishaa Balakrishnan**
+
+GitHub: [Trrr10](https://github.com/Trrr10)
