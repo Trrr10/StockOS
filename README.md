@@ -7,12 +7,12 @@
 Centralize inventory, sales, procurement, and supplier management — with AI-driven insights to help you make smarter stock decisions.
 
 [![React](https://img.shields.io/badge/Frontend-React.js-61DAFB?logo=react&logoColor=white)](#technology-stack)
-[![TypeScript](https://img.shields.io/badge/Language-TypeScript-3178C6?logo=typescript&logoColor=white)](#technology-stack)
-[![Node.js](https://img.shields.io/badge/Backend-Node.js-339933?logo=node.js&logoColor=white)](#technology-stack)
+[![JavaScript](https://img.shields.io/badge/Language-JavaScript-F7DF1E?logo=javascript&logoColor=black)](#technology-stack)
+[![FastAPI](https://img.shields.io/badge/Backend-FastAPI-009688?logo=fastapi&logoColor=white)](#technology-stack)
+[![Python](https://img.shields.io/badge/Language-Python-3776AB?logo=python&logoColor=white)](#technology-stack)
 [![Supabase](https://img.shields.io/badge/Database-Supabase-3ECF8E?logo=supabase&logoColor=white)](#technology-stack)
 [![Groq](https://img.shields.io/badge/AI-Groq-F55036)](#ai-assistant)
 [![Status](https://img.shields.io/badge/Status-Active%20Development-brightgreen)](#project-status)
-[![License](https://img.shields.io/badge/License-MIT-blue)](#license)
 
 </div>
 
@@ -22,11 +22,10 @@ Centralize inventory, sales, procurement, and supplier management — with AI-dr
 
 - [Overview](#overview)
 - [Key Highlights](#key-highlights)
-- [Features](#features)
-  - [Role-Based Access Control](#role-based-access-control)
-  - [Core Modules](#core-modules)
+- [Roles](#roles)
+- [Core Modules](#core-modules)
+- [API Overview](#api-overview)
 - [System Architecture](#system-architecture)
-- [Main Workflow](#main-workflow)
 - [Technology Stack](#technology-stack)
 - [Getting Started](#getting-started)
 - [Security Considerations](#security-considerations)
@@ -37,7 +36,7 @@ Centralize inventory, sales, procurement, and supplier management — with AI-dr
 
 ## Overview
 
-**StockOS** is an AI-powered inventory management platform built to simplify and automate day-to-day business operations. It brings inventory tracking, procurement, sales, supplier management, and reporting together into a single system — with **role-based access control** so every user sees only what's relevant to their job, and an **AI Assistant (powered by Groq)** to help interpret trends and guide replenishment decisions.
+**StockOS** is an AI-powered inventory management platform that brings inventory tracking, procurement, sales & dispatch, and supplier management into a single system — with **role-based dashboards** and an **AI Assistant (powered by Groq)** for reorder suggestions, anomaly detection, and demand forecasting.
 
 ---
 
@@ -45,70 +44,99 @@ Centralize inventory, sales, procurement, and supplier management — with AI-dr
 
 | | |
 |---|---|
-| 🤖 **AI-Powered Insights** | Inventory trend analysis via Groq |
-| 🔐 **Role-Based Access** | Dedicated workflows for Admin, Sales, and Procurement |
-| 📊 **Real-Time Dashboards** | Interactive charts and analytics with Recharts |
-| 🔄 **Full Order Lifecycle** | Sales orders, purchase orders, and supplier management |
-| 🛠️ **Stock Adjustments** | Manual corrections, damage recording, reconciliation |
+| 🤖 **AI-Powered Insights** | Reorder suggestions, anomaly detection, and demand forecasting via Groq |
+| 🔐 **4 Role-Based Dashboards** | Admin, Inventory Manager, Sales Manager, Procurement Manager |
+| 📊 **Real-Time Dashboards** | Interactive charts and traffic-light stock status via Recharts |
+| 📦 **Barcode Workflows** | In-browser barcode generation and camera-based scanning |
+| 🚚 **Live Delivery Tracking** | Map-based order tracking with Leaflet |
+| 🎙️ **Voice Automation** | Speech-to-text and intent parsing via Sarvam AI |
+| 💬 **Team Collaboration** | Built-in group chat and anonymous incident reporting |
 | 📜 **Audit Trail** | Full activity logging for accountability |
-| 🎙️ **Voice Automation** | Powered by Sarvam AI |
-| 📱 **Responsive UI** | Works cleanly across devices |
 
 ---
 
-## Features
+## Roles
 
-### Role-Based Access Control
-
-StockOS supports three primary roles, each with a dedicated workflow.
+StockOS ships with **four primary roles**, each landing on its own dashboard after login:
 
 <details>
 <summary><strong>🛡️ Admin</strong></summary>
 
-- View overall business operations
-- Monitor inventory statistics
-- Access the AI Assistant
-- View audit trails and stock movement history
-- Perform stock adjustments
-- Manage users
-- Access reports and analytics
+- Full system-wide access to every module (Inventory, Sales, Procurement)
+- User and access management
+- Company-wide broadcasts/announcements
+- Review of anonymous incident reports
+- Full audit trail visibility
 
 </details>
 
 <details>
-<summary><strong>💼 Sales</strong></summary>
+<summary><strong>📦 Inventory Manager</strong></summary>
 
-- Create and manage sales orders
-- Track order status
-- Update inventory automatically after sales
-- View customer orders
+- Real-time inventory dashboard and stock stats
+- Product & SKU management
+- Stock adjustments, batch stock commits, and traffic-light stock status
+- Barcode generation and scanning
+- AI Assistant, demand forecasting, and reorder alerts
+- Audit trail, group chat, and anonymous reporting
 
 </details>
 
 <details>
-<summary><strong>📦 Procurement</strong></summary>
+<summary><strong>💼 Sales Manager (Sales & Dispatch)</strong></summary>
 
-- Manage suppliers
-- Create and track purchase orders
-- Receive and restock inventory
-- Monitor procurement history
+- Sales dashboard with revenue tracking
+- Order lifecycle management
+- Manufacturing/production tracking
+- Live delivery tracking map
 
 </details>
+
+<details>
+<summary><strong>🚚 Procurement Manager</strong></summary>
+
+- Procurement dashboard
+- Purchase order creation and tracking
+- Supplier management and supplier scorecards
+- AI-assisted auto-generation of purchase orders
+
+</details>
+
+> **Note:** A few narrower, view-level roles (`warehouse_staff`, `manufacturer`, `accountant`) exist in the permission layer to scope specific nav items, but the four roles above are the ones with dedicated dashboards and login routing.
 
 ---
 
-### Core Modules
+## Core Modules
 
 | Module | What it does |
 |---|---|
-| **Inventory Dashboard** | Real-time stock stats, low-stock alerts, sales/procurement summaries, and interactive analytics |
-| **Inventory Management** | Product, category, and SKU management with search & filtering |
-| **Stock Tracking** | Monitors inflow/outflow and full product-level stock history |
-| **Stock Adjustment** | Manual corrections, damaged-stock recording, and reconciliation with a full adjustment history |
-| **Procurement Management** | Supplier records, purchase orders, goods received, and restocking workflows |
-| **Sales & Orders Management** | Sales order creation, status tracking, and customer management |
-| **AI Assistant** | Groq-powered insights, stock optimization suggestions, and replenishment guidance |
-| **Audit Trail** | Logs user actions, inventory changes, and system activity for full traceability |
+| **Inventory Dashboard** | Real-time stock stats, low-stock/traffic-light alerts, and interactive analytics |
+| **Inventory Management** | Product & SKU management with barcode generation and scanning |
+| **Stock Tracking** | Monitors stock movement history and inflow/outflow |
+| **Stock Adjustment** | Manual corrections, batch stock commits, and reconciliation |
+| **Procurement Management** | Supplier records, purchase orders, and AI-assisted auto-PO generation |
+| **Sales & Dispatch** | Order lifecycle tracking, manufacturing status, and live delivery tracking (map) |
+| **AI Assistant** | Groq-powered reorder suggestions, anomaly detection, demand forecasting, and natural-language inventory queries |
+| **Voice Automation** | Sarvam AI-powered speech-to-text and voice intent parsing |
+| **Team Tools** | Group chat, anonymous incident reporting, and admin broadcasts |
+| **Audit Trail** | Logs user actions and inventory changes for full traceability |
+
+---
+
+## API Overview
+
+The FastAPI backend (`backend/main.py`) exposes REST endpoints grouped as:
+
+| Area | Endpoints |
+|---|---|
+| **Products** | `GET/POST/PUT/DELETE /api/products` |
+| **Stock** | `/api/stock/adjust`, `/api/stock/barcode`, `/api/stock/batch`, `/api/stock/commit`, `/api/stock/movements` |
+| **Inventory** | `/api/inventory/stats`, `/api/inventory/traffic-light` |
+| **Suppliers** | `/api/suppliers`, `/api/suppliers/{id}/score` |
+| **AI** | `/api/ai/reorder-suggestions`, `/api/ai/anomalies`, `/api/ai/demand-forecast`, `/api/ai/query` |
+| **Voice** | `/api/voice/stt`, `/api/voice/tts-confirm`, `/api/voice/parse-intent` |
+| **Collaboration** | `/api/chat/{group_name}`, `/api/announcements`, `/api/reports/anonymous`, `/api/notifications` |
+| **Audit** | `/api/audit` |
 
 ---
 
@@ -116,28 +144,11 @@ StockOS supports three primary roles, each with a dedicated workflow.
 
 ```mermaid
 flowchart TD
-    A[React.js + TypeScript Frontend] --> B[Express.js Backend]
+    A[React + JavaScript Frontend] --> B[FastAPI Backend]
     B --> C[Supabase / PostgreSQL]
-    B --> D[AI Services: Groq API + Sarvam AI]
-    C --> E[Inventory, Sales, Procurement,<br/>Suppliers, Orders, Audit Logs]
-    D --> E
-```
-
----
-
-## Main Workflow
-
-```mermaid
-flowchart TD
-    U[Admin / Sales / Procurement User] --> L[Role-Based Login]
-    L --> D[Dashboard & Modules]
-    D --> I[Inventory]
-    D --> S[Sales]
-    D --> P[Procurement]
-    I --> DB[(Supabase PostgreSQL)]
-    S --> DB
-    P --> DB
-    DB --> AI[AI-Powered Inventory Insights]
+    B --> D[Groq API]
+    B --> E[Sarvam AI]
+    C --> F[Inventory, Sales, Procurement,<br/>Suppliers, Orders, Audit Logs]
 ```
 
 ---
@@ -146,13 +157,12 @@ flowchart TD
 
 | Category | Technologies |
 |---|---|
-| **Frontend** | React.js, TypeScript, Vite, Tailwind CSS |
-| **Backend** | Node.js, Express.js |
+| **Frontend** | React (JSX), Vite, Tailwind CSS, React Router, Framer Motion, Recharts, Leaflet, html5-qrcode, JsBarcode |
+| **Backend** | Python, FastAPI, Uvicorn, Pydantic, httpx |
 | **Database** | Supabase, PostgreSQL |
 | **Authentication** | Supabase Authentication |
 | **AI Integration** | Groq API |
 | **Voice Automation** | Sarvam AI |
-| **Charts & Analytics** | Recharts |
 | **Version Control** | Git, GitHub |
 
 ---
@@ -161,59 +171,69 @@ flowchart TD
 
 ### Prerequisites
 
-Make sure you have the following installed:
-
-- Node.js
-- npm
+- Node.js & npm
+- Python 3.10+
 - Git
-
-You'll also need:
-
-- A Supabase project + credentials
+- A Supabase project + service key
 - A Groq API key
-- A Sarvam AI API key *(if voice automation is enabled)*
+- A Sarvam AI API key
 
-### Installation
+### Frontend Setup
 
 ```bash
-# Clone the repository
 git clone <your-repository-url>
-
-# Navigate to the project directory
-cd StockOS
-
-# Install dependencies
+cd StockOS/frontend
 npm install
 ```
 
-Create a `.env` file in the project root and add:
+Create `frontend/.env`:
 
 ```env
 VITE_SUPABASE_URL=your_supabase_url
 VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
-GROQ_API_KEY=your_groq_api_key
-SARVAM_API_KEY=your_sarvam_api_key
 ```
 
-Start the development server:
+Run the dev server:
 
 ```bash
 npm run dev
 ```
 
-Then open the local development URL shown in your terminal.
+### Backend Setup
+
+```bash
+cd StockOS/backend
+pip install fastapi uvicorn python-dotenv supabase groq httpx pydantic
+```
+
+Create `backend/.env`:
+
+```env
+SUPABASE_URL=your_supabase_url
+SUPABASE_SERVICE_KEY=your_supabase_service_key
+GROQ_API_KEY=your_groq_api_key
+SARVAM_API_KEY=your_sarvam_api_key
+FRONTEND_URL=http://localhost:5173
+```
+
+Run the API:
+
+```bash
+python main.py
+```
+
+The API will be available at `http://localhost:8000`, and the frontend at the URL Vite prints in your terminal.
 
 ---
 
 ## Security Considerations
 
 - ✅ Authenticated user access via Supabase Authentication
-- ✅ Role-based permissions across Admin, Sales, and Procurement
-- ✅ Controlled inventory modifications
-- ✅ Full activity tracking via audit logs
-- ✅ Clear separation of administrative, sales, and procurement workflows
+- ✅ Role-based dashboard access (Admin, Inventory Manager, Sales Manager, Procurement Manager)
+- ✅ Full activity tracking via the audit log endpoint
+- ✅ Anonymous incident reporting for sensitive reports
 
-> ⚠️ API keys should always be stored in environment variables and never committed to the repository.
+> ⚠️ API keys should always be stored in environment variables and never committed to the repository. Role checks are currently enforced on the frontend — pair this with Supabase Row Level Security policies for defense in depth on the backend.
 
 ---
 
